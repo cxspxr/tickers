@@ -4,8 +4,4 @@ require('dotenv').load();
 
 var con = mysql.createConnection(config);
 
-con.connect();
-
-con.end();
-
 module.exports = con;
