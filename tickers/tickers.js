@@ -6,7 +6,7 @@ const wsServer = require('../websocket-server/server');
 var tickers = {};
 
 mysql.connect();
-mysql.query('select name, ticker from tickers', function (error, results) {
+mysql.query('select ticker from tickers', function (error, results) {
     if (error) throw error;
     tickers = results;
 
@@ -17,7 +17,7 @@ mysql.query('select name, ticker from tickers', function (error, results) {
             bfx.onTicker({
                 symbol: tickers[i].ticker
             }, (t) => {
-                tickers[tickers[i].name] = t;
+                tickers[tickers[i].ticker] = t;
             });
         }
     });
