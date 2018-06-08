@@ -6,16 +6,16 @@ const wsServer = require('../websocket-server/server');
 var tickers = {};
 
 mysql.connect();
-mysql.query('select name from tickers', function (error, results) {
+mysql.query('select name, ticker from tickers', function (error, results) {
     if (error) throw error;
     tickers = results;
 
     bfx.on('open', () => {
         for (let i = 0; i < tickers.length; i++) {
-            bfx.subscribeTicker(tickers[i].name);
+            bfx.subscribeTicker(tickers[i].ticker);
 
             bfx.onTicker({
-                symbol: tickers[i].name
+                symbol: tickers[i].ticker
             }, (t) => {
                 tickers[tickers[i].name] = t;
             });
@@ -29,11 +29,11 @@ wsServer.on('request', function(request) {
 
     connection.on('message', function (message) {
         if (message.type === 'utf8') {
-            var name = message.utf8Data;
+            var ticker = message.utf8Data;
 
             function sendTicker() {
-                if (tickers[name] && connection.connected) {
-                    connection.send(JSON.stringify(tickers[name]));
+                if (tickers[ticker] && connection.connected) {
+                    connection.send(JSON.stringify(tickers[ticker]));
                     setTimeout(sendTicker, timeout);
                 }
             }
