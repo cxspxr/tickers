@@ -1,1 +1,1 @@
-module.exports = 10 * 1000;
+module.exports = 5 * 1000;

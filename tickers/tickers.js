@@ -8,18 +8,21 @@ var tickers = {};
 mysql.connect();
 mysql.query('select ticker from tickers', function (error, results) {
     if (error) throw error;
-    tickers = results;
 
     bfx.on('open', () => {
-        for (let i = 0; i < tickers.length; i++) {
-            bfx.subscribeTicker(tickers[i].ticker);
+        for (let i = 0; i < results.length; i++) {
+            bfx.subscribeTicker(results[i].ticker);
 
             bfx.onTicker({
-                symbol: tickers[i].ticker
+                symbol: results[i].ticker
             }, (t) => {
-                tickers[tickers[i].ticker] = t;
+                tickers[results[i].ticker] = t;
             });
         }
+    });
+
+    bfx.on('close', () => {
+        bfx.reconnect();
     });
 });
 mysql.end();
@@ -29,16 +32,14 @@ wsServer.on('request', function(request) {
 
     connection.on('message', function (message) {
         if (message.type === 'utf8') {
-            var ticker = message.utf8Data;
-
-            function sendTicker() {
-                if (tickers[ticker] && connection.connected) {
-                    connection.send(JSON.stringify(tickers[ticker]));
-                    setTimeout(sendTicker, timeout);
+            function sendTickers() {
+                if (connection.connected) {
+                    connection.send(JSON.stringify(tickers));
+                    setTimeout(sendTickers, timeout);
                 }
             }
 
-            sendTicker();
+            sendTickers();
         }
     });
 });
