@@ -9,7 +9,7 @@ setInterval(() => {
             mysql.connect();
             var query = 'update configs set currency_rate = ' + response.data.USD_RUB + ' limit 1';
             mysql.query(query, function (error) {
-                if (error) throw err;
+                if (error) throw error;
             });
             mysql.end();
         });
