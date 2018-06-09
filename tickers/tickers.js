@@ -2,6 +2,7 @@ const timeout = require('./timeout');
 const bfx = require('../bitfinex/bitfinex');
 const mysql = require('../database/db');
 const wsServer = require('../websocket-server/server');
+require('./restart');
 
 var tickers = {};
 
@@ -24,6 +25,10 @@ mysql.query('select ticker from tickers', function (error, results) {
     bfx.on('close', () => {
         bfx.reconnect();
     });
+
+    bfx.on('error', () => {
+        bfx.reconnect();
+    });
 });
 mysql.end();
 
@@ -44,5 +49,4 @@ wsServer.on('request', function(request) {
     });
 });
 
-
-module.exports = wsServer;
+bfx.open();
