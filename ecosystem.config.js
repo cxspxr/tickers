@@ -3,7 +3,7 @@ module.exports = {
     {
       name      : 'tickers',
       script    : 'tickers/tickers.js',
-      watch     : ['tickers/.restart']
+      watch     : ['tickers/watch-me.js']
     }
   ]
 };
