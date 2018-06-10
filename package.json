@@ -12,7 +12,6 @@
     "axios": "^0.18.0",
     "bitfinex-api-node": "^2.0.0-beta.1",
     "dotenv": "^6.0.0",
-    "fs": "0.0.1-security",
     "http": "0.0.0",
     "mysql": "^2.15.0",
     "websocket": "^1.0.26"

@@ -2,7 +2,6 @@ const timeout = require('./timeout');
 const bfx = require('../bitfinex/bitfinex');
 const mysql = require('../database/db');
 const wsServer = require('../websocket-server/server');
-require('./restart');
 
 var tickers = {};
 

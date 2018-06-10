@@ -3,12 +3,14 @@ module.exports = {
     {
       name      : 'tickers',
       script    : 'tickers/tickers.js',
-      watch     : ['tickers/watch-me.js']
+      watch     : true,
+      cron_restart : '0 * * * *'
     },
     {
       name      : 'rate',
       script    : 'rate/rate.js',
-      watch     : false
+      watch     : true,
+      cron_restart : '*/30 * * * *'
     }
   ]
 };
