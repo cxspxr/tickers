@@ -20,14 +20,6 @@ mysql.query('select ticker from tickers', function (error, results) {
             });
         }
     });
-
-    bfx.on('close', () => {
-        bfx.reconnect();
-    });
-
-    bfx.on('error', () => {
-        bfx.reconnect();
-    });
 });
 mysql.end();
 

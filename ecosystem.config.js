@@ -4,7 +4,7 @@ module.exports = {
       name      : 'tickers',
       script    : 'tickers/tickers.js',
       watch     : true,
-      cron_restart : '0 * * * *'
+      cron_restart : '*/30 * * * *'
     },
     {
       name      : 'rate',
