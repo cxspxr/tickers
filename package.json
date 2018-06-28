@@ -14,7 +14,7 @@
     "dotenv": "^6.0.0",
     "http": "0.0.0",
     "mysql": "^2.15.0",
-    "redis": "^2.8.0",
+    "node-redis-pubsub": "^3.0.0",
     "websocket": "^1.0.26"
   }
 }
