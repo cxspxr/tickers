@@ -1,2 +1,1 @@
-const NRP = require('node-redis-pubsub');
-const config = require('./config');
+const nrp = require('../redis/pubsub');
