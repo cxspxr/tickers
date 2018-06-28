@@ -11,6 +11,12 @@ module.exports = {
       script    : 'rate/rate.js',
       watch     : true,
       cron_restart : '*/30 * * * *'
+    },
+    {
+      name      : 'sells',
+      script    : 'sells/sells.js',
+      watch     : true,
+      cron_restart : '*/30 * * * *'
     }
   ]
 };
