@@ -3,7 +3,7 @@ const sell = require('./sell');
 
 module.exports = function() {
     let query = 'select transaction, user_id, ticker_id from sells where'
-        + ' status_id in (select id from statuses where statuses.name = "processing")';
+        + ' status_id in (select id from statuses where statuses.name = "processing" or statuses.name = "waiting")';
     db.query(query, function(error, sells) {
         if (error) throw error;
 
