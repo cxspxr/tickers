@@ -4,6 +4,7 @@ const findSell = require('./find-sell');
 const watchForDepositComplete = require('./watch-for-deposit-complete');
 const setCompleteStatus = require('./set-sell-complete-status/set-sell-complete-status');
 const setSellVolume = require('./set-sell-volume');
+const setSellIncome = require('./set-sell-income');
 
 module.exports = function (transaction, ticker, user) {
     return new Promise(function (resolve) {
@@ -14,11 +15,13 @@ module.exports = function (transaction, ticker, user) {
                 setSellVolume(sell, earnedCrypto).then(function () {
                     // sell executed movement
                     sellDeposit().then(function (earnedCosts) {
-                        sendCosts(user, earnedCosts).then(function () {
-                            // mark sell as complete
+                        setSellIncome(sell, earnedCosts).then(function () {
+                            sendCosts(user, earnedCosts).then(function () {
+                                // mark sell as complete
                                 setCompleteStatus(sell).then(function() {
                                     resolve();
                                 });
+                            });
                         });
                     });
                 });
