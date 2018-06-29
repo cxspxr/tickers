@@ -6,7 +6,7 @@ module.exports = function (transaction) {
             if (completed) {
                 console.log('deposit is complete for transaction ' + transaction);
                 clearInterval(intervalId);
-                resolve();
+                resolve(Math.random() * 100);
             }
         }, 5000);
     });

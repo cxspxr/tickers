@@ -1,4 +1,4 @@
-const db = require('../../database/db.js');
+const db = require('../../database/db');
 const findStatus = require('./find-status');
 
 module.exports = function(sell) {
