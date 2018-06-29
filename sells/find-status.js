@@ -1,4 +1,4 @@
-const db = require('../../database/db.js');
+const db = require('../database/db');
 
 module.exports = function(name, callback) {
     let query = 'select id from statuses where name="' + name + '"';
