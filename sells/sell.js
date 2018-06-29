@@ -11,7 +11,7 @@ module.exports = function (transaction, ticker, user) {
         // watch for movement 'executed' status
         watchForDepositComplete(transaction).then(function (earnedCrypto) {
             // find sell
-            findSell(transaction, ticker, function (sell) {
+            findSell(transaction, ticker).then(function (sell) {
                 setSellStatus(sell, 'processing').then(function () {
                     setSellVolume(sell, earnedCrypto).then(function () {
                         // sell executed movement

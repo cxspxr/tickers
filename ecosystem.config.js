@@ -17,6 +17,12 @@ module.exports = {
       script    : 'sells/sells.js',
       watch     : true,
       cron_restart : '*/30 * * * *'
+    },
+    {
+      name      : 'cancellation',
+      script    : 'cancellation/cancellation.js',
+      watch     : true,
+      cron_restart : '0 * * * *'
     }
   ]
 };
