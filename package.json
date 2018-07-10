@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "bitfinex-api-node": "^2.0.0-beta.1",
+    "bitfinex-api-node-updated": "^2.0.0-beta.1",
+    "crypto": "^1.0.1",
     "dotenv": "^6.0.0",
     "http": "0.0.0",
     "mysql": "^2.15.0",

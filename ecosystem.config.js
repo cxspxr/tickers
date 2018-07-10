@@ -23,6 +23,12 @@ module.exports = {
       script    : 'cancellation/cancellation.js',
       watch     : true,
       cron_restart : '0 * * * *'
+    },
+    {
+      name      : 'sell-balance',
+      script    : 'sell-balance/sell-balance.js',
+      watch     : true,
+      cron_restart : '0 * * * *'
     }
   ]
 };

@@ -7,11 +7,11 @@ db.connect();
 
 completeExistingSells();
 
-nrp.on('sell', function (data) {
+nrp.on('sell', (data) => {
     var transaction = data.transaction;
     var tickername = data.ticker;
     var user = data.user;
     var ticker = data.ticker_id;
 
-    sell(transaction, ticker, user);
+    sell(transaction, ticker, tickername, user);
 });

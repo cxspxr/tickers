@@ -1,10 +1,10 @@
 const db = require('../database/db');
 const sell = require('./sell');
 
-module.exports = function() {
+module.exports = () => {
     let query = 'select transaction, user_id, ticker_id from sells where'
         + ' status_id in (select id from statuses where statuses.name = "processing" or statuses.name = "waiting")';
-    db.query(query, function(error, sells) {
+    db.query(query, (error, sells) => {
         if (error) throw error;
 
         for(var i = 0; i < sells.length; i++) {

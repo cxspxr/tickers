@@ -2,9 +2,9 @@ const WebSocketServer = require('websocket').server;
 const http = require('http');
 require('dotenv').load();
 
-server = http.createServer(function(request, response) {});
+server = http.createServer((request, response) => {});
 
-server.listen(process.env.WEBSOCKET_PORT, function() {
+server.listen(process.env.WEBSOCKET_PORT, () => {
    console.log((new Date()) + " Server is listening on port " + process.env.WEBSOCKET_PORT);
 });
 
