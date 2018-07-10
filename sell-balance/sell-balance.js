@@ -29,6 +29,8 @@ bfx.once('auth', () => {
 
                 o.submit().then(() => {
                     console.log('submitted');
+                }).catch((err) => {
+                    console.log(err);
                 });
 
                 o.on('close', () => {
