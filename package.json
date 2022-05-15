@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.27.0",
     "bitfinex-api-node-updated": "^2.0.0-beta.1",
     "crypto": "^1.0.1",
     "dotenv": "^6.0.0",
